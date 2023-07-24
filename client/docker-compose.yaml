@@ -1,0 +1,20 @@
+services:
+  mq1:
+    image: "ibm-mq-server"
+    stdin_open: true
+    ports:
+      - 11443:9443
+      - 11414:1414
+    networks:
+      - qm1network
+  client:
+    image: "ibm-mq-client"
+    stdin_open: true
+    ports:
+      - 3000:3000
+    networks:
+      - qm1network
+networks:
+  qm1network:
+    labels:
+      - com.ibm.mq=qm1
