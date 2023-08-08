@@ -13,6 +13,4 @@ cd /var/mqm/web/installations/Installation1/servers/mqweb/
 mv basic_registry.xml mqwebuser.xml
 chmod a+rwx /var/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml
 su - mqm -c "setmqweb properties -k httpHost -v '*'"
-su - mqm -c "strmqweb"
-su - mqm -c "dspmqweb"
 /bin/bash

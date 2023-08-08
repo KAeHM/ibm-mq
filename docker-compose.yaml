@@ -1,0 +1,35 @@
+services:
+  mq1:
+    image: "kaehm/ibm-mq-server:1.0"
+    stdin_open: true
+    ports:
+      - 11443:9443
+      - 11414:1414
+    networks:
+      - qm1network
+  mq2:
+    image: "kaehm/ibm-mq-server:1.0"
+    stdin_open: true
+    ports:
+      - 10443:9443
+      - 10414:1414
+    networks:
+      - qm1network
+  client1:
+    image: "kaehm/ibm-mq-client:1.0"
+    stdin_open: true
+    ports:
+      - 3000:3000
+    networks:
+      - qm1network
+  client2:
+    image: "kaehm/ibm-mq-client:1.0"
+    stdin_open: true
+    ports:
+      - 3030:3030
+    networks:
+      - qm1network
+networks:
+  qm1network:
+    labels:
+      - com.ibm.mq=qm1
